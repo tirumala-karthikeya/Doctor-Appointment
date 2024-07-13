@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style type="text/css">
+        body {
+            background: url("img/image.png") no-repeat;
+            background-size: cover;
+            background-origin: content-box;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        form {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f8f9fa;
+            width: 350px;
+            height: 400px;
+            padding: 20px;
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -70%);
+            }
+
+            to {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        input[type="text"],
+        input[name="password"] {
+            background: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 250px;
+            border-radius: 4px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[name="password"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            width: 270px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        label {
+            float: left;
+            margin-left: 55px;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .fbtn,
+        .ggbtn {
+            background: #fff;
+            border: 1px solid #ccc;
+            float: left;
+            margin-left: 40px;
+            border-radius: 4px;
+            width: 110px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .fbtn:hover,
+        .ggbtn:hover {
+            transform: scale(1.05);
+        }
+
+        .img {
+            width: 35px;
+            height: auto;
+            padding: 2px;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #dc3545;
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        {{n}}
+        <form method="POST" action="{% url 'signin' %}">
+            {% csrf_token %}
+            <div>
+                <h>Sign in with</h>
+            </div><br>
+
+            <div>
+                <label>EMAILID</label><br>
+                <input type="text" name="emailid">
+            </div><br>
+
+            <div>
+                <label>Password: <a href="{% url 'forget' %}">Forgot?</a></label><br>
+                <input type="password" name="password">
+            </div><br>
+
+            <div>
+                <input type="submit" name="submit" value="Sign In">
+            </div><br><br>
+
+            <span>
+                Not a member?<a href="{% url 'signup' %}">Sign Up</a>
+            </span>
+        </form>
+    </center>
+</body>
+</html>

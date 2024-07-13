@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <style type="text/css">
+        body {
+            background: url("img/image.png") no-repeat;
+            background-size: cover;
+            background-origin: content-box;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        form {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f8f9fa;
+            width: 350px;
+            height: 500px;
+            padding: 20px;
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -70%);
+            }
+
+            to {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        input[type="text"],
+        input[name="password"],
+        input[type="email"],
+        input[name="Age"] {
+            background: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 250px;
+            border-radius: 4px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[name="password"]:focus,
+        input[type="email"]:focus,
+        input[name="Age"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            width: 270px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        label {
+            float: left;
+            margin-left: 55px;
+            color: #333;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 270px;
+            border-radius: 4px;
+            background: #eee;
+        }
+
+        option {
+            background: #eee;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+<center>
+    {{n}}
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div>
+            <label for="selectoption"><b>Sign Up As</b></label><br>
+            <select name="selectoption">
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+            </select>
+        </div><br>
+
+        <div>
+            <label>Firstname</label><br>
+            <input type="text" name="fname">
+        </div><br>
+
+        <div>
+            <label>Lastname</label><br>
+            <input type="text" name="lname">
+        </div><br>
+
+        <div>
+            <label>Email id</label><br>
+            <input type="email" name="email">
+        </div><br>
+
+        <div>
+            <label>Password</label><br>
+            <input type="password" name="password">
+        </div><br>
+
+        <div>
+            <label><b>Gender</b></label><br>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div><br>
+
+        <div>
+            <input type="submit" name="submit" value="Sign Up">
+        </div><br><br>
+    </form>
+</center>
+</body>
+</html>
